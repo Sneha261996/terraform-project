@@ -10,3 +10,12 @@ resource "aws_instance" "example" {
     Name = "GitHub-Actions-EC2"
   }
 }
+
+terraform {
+  backend "s3" {
+    bucket         = "your-terraform-state-bucket"
+    key            = "ec2-instance/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+  }
+}
